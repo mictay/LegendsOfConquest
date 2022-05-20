@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public static Player instance;
 
     [SerializeField] 
-    public string transitionName;
+    public string entranceAreaName;
 
     [SerializeField]
     private int moveSpeed = 7;
