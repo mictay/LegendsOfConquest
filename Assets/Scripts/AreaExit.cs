@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class AreaExit : MonoBehaviour
 {
 
+    [SerializeField] string transitionName;
+
     [SerializeField]
     private string sceneToLoad;
 
@@ -27,6 +29,7 @@ public class AreaExit : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             SceneManager.LoadScene(sceneToLoad);
+            Player.instance.transitionName = transitionName;
         }
 
     }
