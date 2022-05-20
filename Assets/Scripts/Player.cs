@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
+    public static Player instance;
+
     [SerializeField]
     private int moveSpeed = 7;
 
@@ -17,7 +19,18 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        //Destroy other instances of a Player
+        if(instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        } else
+        {
+            instance = this;
+        }
+
+        //Keep this player instance when loading new scenes
+        DontDestroyOnLoad(playerAnimator);
     }
 
     // Update is called once per frame

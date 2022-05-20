@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 144266688}
   - component: {fileID: 144266687}
+  - component: {fileID: 144266689}
   m_Layer: 0
   m_Name: background mountains
   m_TagString: Untagged
@@ -205,8 +206,90 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &144266689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144266686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca74355e70fbe334c898f11730369b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: 
+--- !u!1001 &309316803
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2405516084178234512, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: sceneToLoad
+      value: TownScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234517, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_Name
+      value: AreaExit
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234518, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234518, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234518, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234518, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234518, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234518, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234518, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234518, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234518, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234518, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234518, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234519, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234519, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
 --- !u!1 &1988953874
 GameObject:
   m_ObjectHideFlags: 0
