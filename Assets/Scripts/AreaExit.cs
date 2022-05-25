@@ -10,7 +10,7 @@ public class AreaExit : MonoBehaviour
     public string enterAreaName;
 
     [SerializeField]
-    public string targetEnterAreaName;
+    public string targetAreaName;
 
     [SerializeField]
     private string sceneToLoad;
@@ -37,7 +37,7 @@ public class AreaExit : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             //Debug.Log("Player entrance area name is: " + targetEnterAreaName);
-            Player.instance.entranceAreaName = targetEnterAreaName;
+            Player.instance.entranceAreaName = targetAreaName;
             SceneManager.LoadScene(sceneToLoad);
         }
 

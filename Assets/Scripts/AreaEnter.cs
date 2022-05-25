@@ -14,6 +14,9 @@ public class AreaEnter : MonoBehaviour
         if(Player.instance != null && areaName == Player.instance.entranceAreaName)
         {
             Player.instance.transform.position = transform.position;
+        } else
+        {
+            Debug.Log("not setting position");
         }
 
     }

@@ -231,6 +231,10 @@ PrefabInstance:
       value: MountainScene-1
       objectReference: {fileID: 0}
     - target: {fileID: 2405516084178234512, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
+      propertyPath: targetAreaName
+      value: TownScene-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405516084178234512, guid: 0e1dcb4f2a127f343aa4cf57efc3ec34, type: 3}
       propertyPath: transitionAreaName
       value: Mountains-1
       objectReference: {fileID: 0}
