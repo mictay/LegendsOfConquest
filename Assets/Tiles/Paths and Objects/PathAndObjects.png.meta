@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -5513,6 +5513,7 @@ TextureImporter:
       PathAndObjects_137: -36139327
       PathAndObjects_90: -1871536596
       PathAndObjects_161: -1161126395
+      PathAndObjects_201: -27568513
       PathAndObjects_81: -946138209
       PathAndObjects_34: -505047106
       PathAndObjects_39: -14725725
@@ -5520,7 +5521,6 @@ TextureImporter:
       PathAndObjects_2: 1269388724
       PathAndObjects_177: 1913972646
       PathAndObjects_193: 423603943
-      PathAndObjects_201: -27568513
       PathAndObjects_124: 452974191
       PathAndObjects_246: -1071426193
       PathAndObjects_72: -1521169996
@@ -5608,15 +5608,15 @@ TextureImporter:
       PathAndObjects_208: 634406885
       PathAndObjects_223: 1254251693
       PathAndObjects_100: 1106582842
-      PathAndObjects_149: 347319369
       PathAndObjects_241: 1027679177
+      PathAndObjects_149: 347319369
       PathAndObjects_36: -1330494198
       PathAndObjects_46: -1312379261
-      PathAndObjects_49: 256489505
       PathAndObjects_42: 673293827
+      PathAndObjects_49: 256489505
       PathAndObjects_169: 1008249100
-      PathAndObjects_52: 123350313
       PathAndObjects_173: -717999934
+      PathAndObjects_52: 123350313
       PathAndObjects_71: -311694755
       PathAndObjects_118: -1152843352
       PathAndObjects_54: -117438172
