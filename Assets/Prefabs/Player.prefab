@@ -138,9 +138,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entranceAreaName: 
-  moveSpeed: 3
+  moveSpeed: 7
   playerRigidBody2D: {fileID: 2027788658799425831}
   playerAnimator: {fileID: 2027788658799425824}
+  tileMap: {fileID: 0}
 --- !u!95 &2027788658799425824
 Animator:
   serializedVersion: 4

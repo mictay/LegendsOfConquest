@@ -10,13 +10,14 @@ public class AreaEnter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        if(Player.instance != null && areaName == Player.instance.entranceAreaName)
+        Debug.Log($"Starting areaName= {areaName}");
+
+        if (Player.instance != null && areaName == Player.instance.entranceAreaName)
         {
             Player.instance.transform.position = transform.position;
         } else
         {
-            Debug.Log("not setting position");
+            Debug.Log($"not setting position {areaName} {Player.instance.entranceAreaName}");
         }
 
     }

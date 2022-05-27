@@ -6,7 +6,9 @@ using UnityEngine.Tilemaps;
 public class Player : MonoBehaviour
 {
 
-    public static Player instance;
+    public static Player instance { get; private set; }
+
+    public int instanceNumber = 0;
 
     [SerializeField] 
     public string entranceAreaName;
@@ -26,18 +28,35 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Tilemap tileMap;
 
+    private static int counter = 0;
+
+    private void Awake()
+    {
+        Debug.Log("Player Awake() called");
+
+        if (instance != null && instance != this)
+            Destroy(this.gameObject);
+        else
+            instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        Player.counter++;
 
         //Destroy other instances of a Player
-        if(instance != null && instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
-        } else
-        {
-            instance = this;
         }
+
+        instance = this;
+
+        if (instanceNumber == 0)
+            instanceNumber = Player.counter;
+
+        Debug.Log($"Player Start() called {counter} for Player {instanceNumber}");
 
         //Keep this player instance when loading new scenes
         DontDestroyOnLoad(playerAnimator);
