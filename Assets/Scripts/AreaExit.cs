@@ -38,9 +38,19 @@ public class AreaExit : MonoBehaviour
         {
             //Debug.Log("Player entrance area name is: " + targetEnterAreaName);
             Player.instance.entranceAreaName = targetAreaName;
-            SceneManager.LoadScene(sceneToLoad);
+
+            MenuManager.instance.FadeImage();
+
+            StartCoroutine(LoadSceneCoroutine());
         }
 
+    }
+
+    IEnumerator LoadSceneCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.LoadScene(sceneToLoad);
     }
 
 }
