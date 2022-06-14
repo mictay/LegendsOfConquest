@@ -38,20 +38,13 @@ public class Player : MonoBehaviour
             Destroy(this.gameObject);
         else
             instance = this;
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         Player.counter++;
-
-        //Destroy other instances of a Player
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-
-        instance = this;
 
         if (instanceNumber == 0)
             instanceNumber = Player.counter;
@@ -60,9 +53,6 @@ public class Player : MonoBehaviour
 
         //Keep this player instance when loading new scenes
         DontDestroyOnLoad(playerAnimator);
-
-        bottomLeftEdge = tileMap.localBounds.min + new Vector3(0.5f, 1f, 0);
-        topRightEdge = tileMap.localBounds.max + new Vector3(-0.5f, -1f, 0);
     }
 
     // Update is called once per frame
@@ -92,6 +82,15 @@ public class Player : MonoBehaviour
             Mathf.Clamp(transform.position.z, bottomLeftEdge.z, topRightEdge.z)
         );
 
+    }
+
+    public void SetLimit(Vector3 bottomLeftEdgeToSet, Vector3 topRightEdgeToSet)
+    {
+
+        Debug.Log($"Player SetLimit() called {counter} for Player {instanceNumber} setting bounds {bottomLeftEdgeToSet}, {topRightEdgeToSet}");
+
+        this.bottomLeftEdge = bottomLeftEdgeToSet;
+        this.topRightEdge = topRightEdgeToSet;
     }
 
 }
