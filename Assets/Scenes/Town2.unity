@@ -123,11 +123,39 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &279933432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1763880270251346423, guid: 260d6e1ccd433854a990bd5cf7df9d99, type: 3}
+  m_PrefabInstance: {fileID: 1763880271471233860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &279933437 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1763880270251346419, guid: 260d6e1ccd433854a990bd5cf7df9d99, type: 3}
   m_PrefabInstance: {fileID: 1763880271471233860}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &279933438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279933432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2538bf450a886054389e563a243c9a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogText: {fileID: 424925131}
+  nameText: {fileID: 1767174001}
+  dialogBox: {fileID: 1731489139}
+  nameBox: {fileID: 1632955483}
+  dialogSentence:
+  - Hello World from Inspector
+  - I'm Jimmy
+  - I come from the underworld
+  - I use to kill many peasants
+  - But now I'm a good demon
+  currentSentence: 0
 --- !u!1 &397500252
 GameObject:
   m_ObjectHideFlags: 0
@@ -13606,7 +13634,7 @@ GameObject:
   - component: {fileID: 1632955486}
   - component: {fileID: 1632955485}
   m_Layer: 5
-  m_Name: Dialog Panel (1)
+  m_Name: Name Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13619,19 +13647,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632955483}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1767174000}
-  m_Father: {fileID: 279933437}
-  m_RootOrder: 2
+  m_Father: {fileID: 1731489140}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -561.32, y: -61}
-  m_SizeDelta: {x: -1290.6499, y: -956.4735}
+  m_AnchoredPosition: {x: -566.74896, y: 251.99597}
+  m_SizeDelta: {x: -1133.5068, y: -222.48047}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1632955485
 MonoBehaviour:
@@ -13702,6 +13730,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 424925130}
+  - {fileID: 1632955484}
   m_Father: {fileID: 279933437}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
