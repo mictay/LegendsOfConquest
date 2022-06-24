@@ -258,8 +258,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 9.669922, y: 1.0559692}
-  m_SizeDelta: {x: -247.24805, y: -100.140015}
+  m_AnchoredPosition: {x: 11.902283, y: -7.1295166}
+  m_SizeDelta: {x: -251.7129, y: -116.5109}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &424925131
 MonoBehaviour:
@@ -281,10 +281,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hey there, how are you
+  m_text: Sample Font Size ABCDE FGHIJK LMNOP QRSTUV WXYZ 0123456789 abced fghijklm
+    nopqrstuv wxyz. ? ! " $ & *
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b9dcd375d4eb30549a6124339451cdc8, type: 2}
-  m_sharedMaterial: {fileID: -5441284660410955098, guid: b9dcd375d4eb30549a6124339451cdc8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 52589afeb714ef34a99a78f59a856a09, type: 2}
+  m_sharedMaterial: {fileID: 8367794887564945332, guid: 52589afeb714ef34a99a78f59a856a09, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -308,15 +309,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 58.4
   m_fontSizeBase: 56.13
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -13837,8 +13838,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hey there, how are you
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b9dcd375d4eb30549a6124339451cdc8, type: 2}
-  m_sharedMaterial: {fileID: -5441284660410955098, guid: b9dcd375d4eb30549a6124339451cdc8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 52589afeb714ef34a99a78f59a856a09, type: 2}
+  m_sharedMaterial: {fileID: 8367794887564945332, guid: 52589afeb714ef34a99a78f59a856a09, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13862,7 +13863,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.55
+  m_fontSize: 34.3
   m_fontSizeBase: 56.13
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13870,7 +13871,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

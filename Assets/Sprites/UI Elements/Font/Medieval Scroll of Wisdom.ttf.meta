@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 44f3aaaf4eefc404cbdc63a449321af4
+guid: f7fb471044c57c34fa339ee8ef798c23
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - medieval party
+  - Medieval Scroll of Wisdom
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
