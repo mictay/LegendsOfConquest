@@ -17,9 +17,11 @@ public class DialogHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canActivateBox && Input.GetButtonDown("Fire1"))
+        if (canActivateBox && Input.GetButtonDown("Fire1") && !DialogController.instance.IsDialogBoxActive())
+        {
             Debug.Log("Hey we can activate the dialog box");
-
+            DialogController.instance.ActivateDialog(sentences);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,4 +39,6 @@ public class DialogHandler : MonoBehaviour
             canActivateBox = false;
         }
     }
+
+
 }

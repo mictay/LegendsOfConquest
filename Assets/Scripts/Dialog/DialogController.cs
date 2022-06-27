@@ -20,8 +20,8 @@ public class DialogController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        instance = this;
+        if(instance == null)
+            instance = this;
 
         Debug.Log("DialogController Start() called");
         currentSentence = 0;
@@ -39,7 +39,7 @@ public class DialogController : MonoBehaviour
 
                 if (currentSentence > dialogSentence.Length - 1)
                 {
-                    currentSentence = 0;
+                    currentSentence = -1;
                     dialogBox.SetActive(false);
                 }
                 else
@@ -50,4 +50,18 @@ public class DialogController : MonoBehaviour
 
         }
     }
+
+    public void ActivateDialog(string[] newSentencesToUse)
+    {
+        dialogSentence = newSentencesToUse;
+        currentSentence = 0;
+        dialogText.text = newSentencesToUse[currentSentence];
+        dialogBox.SetActive(true);
+    }
+
+    public bool IsDialogBoxActive()
+    {
+        return dialogBox.activeInHierarchy;
+    }
+
 }
