@@ -15,9 +15,14 @@ public class DialogController : MonoBehaviour
 
     [SerializeField] int currentSentence;
 
+    public static DialogController instance;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        instance = this;
+
         Debug.Log("DialogController Start() called");
         currentSentence = 0;
         dialogText.text = dialogSentence[currentSentence];
