@@ -27,7 +27,7 @@ public class DialogHandler : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        Debug.Log("DialogHandler.OnTriggerEnter2D");
+        Debug.Log("Hi quinn, DialogHandler.OnTriggerEnter2D");
 
         if (collision.CompareTag("Player"))
         {
