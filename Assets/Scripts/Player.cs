@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
 
     private static int counter = 0;
 
+    private bool deactivatedMovement = false;
+
     private void Awake()
     {
         Debug.Log("Player Awake() called");
@@ -58,8 +60,21 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MovePlayer();
+    }
+
+    private void MovePlayer()
+    {
+
+        if (this.deactivatedMovement)
+        {
+            playerRigidBody2D.velocity = Vector2.zero;
+            return;
+        }
+
         float horizontalMovement = Input.GetAxisRaw("Horizontal");//;
         float verticalMovement = Input.GetAxisRaw("Vertical"); // * Time.deltaTime;
+
         playerRigidBody2D.velocity = new Vector2(horizontalMovement, verticalMovement) * moveSpeed;
 
         //Give the current player velocity values to the animator
@@ -69,7 +84,7 @@ public class Player : MonoBehaviour
         playerAnimator.SetFloat("movementY", playerRigidBody2D.velocity.y);
 
         //if we are walking in any direction, remember this direction.
-        if(horizontalMovement == 1 || horizontalMovement == -1 || verticalMovement == 1 || verticalMovement == -1)
+        if (horizontalMovement == 1 || horizontalMovement == -1 || verticalMovement == 1 || verticalMovement == -1)
         {
             playerAnimator.SetFloat("lastX", horizontalMovement);
             playerAnimator.SetFloat("lastY", verticalMovement);
@@ -81,7 +96,6 @@ public class Player : MonoBehaviour
             Mathf.Clamp(transform.position.y, bottomLeftEdge.y, topRightEdge.y),
             Mathf.Clamp(transform.position.z, bottomLeftEdge.z, topRightEdge.z)
         );
-
     }
 
     public void SetLimit(Vector3 bottomLeftEdgeToSet, Vector3 topRightEdgeToSet)
@@ -91,6 +105,16 @@ public class Player : MonoBehaviour
 
         this.bottomLeftEdge = bottomLeftEdgeToSet;
         this.topRightEdge = topRightEdgeToSet;
+    }
+
+    public void SetDeactivatedMovement(bool deactivatedMovement)
+    {
+        this.deactivatedMovement = deactivatedMovement;
+    }
+
+    public bool isDeactivatedMovement()
+    {
+        return this.deactivatedMovement;
     }
 
 }

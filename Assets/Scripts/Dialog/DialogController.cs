@@ -41,6 +41,9 @@ public class DialogController : MonoBehaviour
                 {
                     currentSentence = -1;
                     dialogBox.SetActive(false);
+
+                    //Let the player move now
+                    Player.instance.SetDeactivatedMovement(false);
                 }
                 else
                 {
@@ -53,10 +56,15 @@ public class DialogController : MonoBehaviour
 
     public void ActivateDialog(string[] newSentencesToUse)
     {
+        //Stop the player from moving while in dialog mode
+        Player.instance.SetDeactivatedMovement(true);
+
         dialogSentence = newSentencesToUse;
         currentSentence = 0;
         dialogText.text = newSentencesToUse[currentSentence];
         dialogBox.SetActive(true);
+
+        
     }
 
     public bool IsDialogBoxActive()
