@@ -13691,9 +13691,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sentences:
+  - '#Healer'
   - Hey I'm a human healer
+  - '#Jimmy'
   - Hey I'm a Demon called Jimmy
   - I've come for your soul
+  - '#Healer'
   - Why are you so mean Jimmy
   - You seem to be nice
 --- !u!1 &1632955483

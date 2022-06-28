@@ -26,14 +26,19 @@ public class DialogHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        Debug.Log("DialogHandler.OnTriggerEnter2D");
+
         if (collision.CompareTag("Player"))
         {
             canActivateBox = true;
         }
     }
 
-    private void OnTriggerExit(Collider collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
+        Debug.Log("DialogHandler.OnTriggerExit");
+
         if (collision.CompareTag("Player"))
         {
             canActivateBox = false;

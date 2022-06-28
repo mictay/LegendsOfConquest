@@ -11,9 +11,9 @@ public class DialogController : MonoBehaviour
 
     [SerializeField] GameObject dialogBox, nameBox;
 
-    [SerializeField] string[] dialogSentence;
+    string[] dialogSentences = null;
 
-    [SerializeField] int currentSentence;
+    int currentSentence = -1;
 
     public static DialogController instance;
 
@@ -24,30 +24,41 @@ public class DialogController : MonoBehaviour
             instance = this;
 
         Debug.Log("DialogController Start() called");
-        currentSentence = 0;
-        dialogText.text = dialogSentence[currentSentence];
+
+        //Just clear the last value, incase we blink-show it starting a new dialog
+        ClearDialogNameText();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(dialogBox.activeInHierarchy)
+        if(dialogBox.activeInHierarchy && dialogSentences != null && dialogSentences.Length != 0)
         {
             if(Input.GetButtonUp("Fire1"))
             {
+                Debug.Log("DialogController.Update() Fire1 event");
                 currentSentence++;
 
-                if (currentSentence > dialogSentence.Length - 1)
+                if (currentSentence > dialogSentences.Length - 1)
                 {
                     currentSentence = -1;
                     dialogBox.SetActive(false);
+
+                    //Just clear the last value, incase we blink-show it starting a new dialog
+                    ClearDialogNameText();
 
                     //Let the player move now
                     Player.instance.SetDeactivatedMovement(false);
                 }
                 else
                 {
-                    dialogText.text = dialogSentence[currentSentence];
+
+                    CheckForName();
+                    if (currentSentence < dialogSentences.Length)
+                        dialogText.text = dialogSentences[currentSentence];
+                    else
+                        Player.instance.SetDeactivatedMovement(false);
                 }
             }
 
@@ -59,17 +70,29 @@ public class DialogController : MonoBehaviour
         //Stop the player from moving while in dialog mode
         Player.instance.SetDeactivatedMovement(true);
 
-        dialogSentence = newSentencesToUse;
-        currentSentence = 0;
-        dialogText.text = newSentencesToUse[currentSentence];
+        dialogSentences = newSentencesToUse;
         dialogBox.SetActive(true);
-
-        
     }
 
     public bool IsDialogBoxActive()
     {
         return dialogBox.activeInHierarchy;
+    }
+
+    private void CheckForName()
+    {
+        if (dialogSentences[currentSentence].StartsWith("#"))
+        {
+            nameText.text = dialogSentences[currentSentence].Replace("#", "");
+            currentSentence++;
+        }
+    }
+
+    private void ClearDialogNameText()
+    {
+        //Just clear the last value, incase we blink-show it starting a new dialog
+        dialogText.text = "";
+        nameText.text = "";
     }
 
 }
