@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
 {
 
     [SerializeField] Image imageToFade;
+    [SerializeField] GameObject menu;
 
     public static MenuManager instance;
 
@@ -16,6 +17,29 @@ public class MenuManager : MonoBehaviour
             Destroy(this.gameObject);
         else
             instance = this;
+    }
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            ToggleStatsMenu();
+        }
+    }
+
+
+    public void ToggleStatsMenu()
+    {
+        if (menu.activeInHierarchy)
+        {
+            menu.SetActive(false);
+            GameManager.instance.gameMenuOpened = false;
+        }
+        else
+        {
+            menu.SetActive(true);
+            GameManager.instance.gameMenuOpened = true;
+        }
     }
 
     public void FadeImage()

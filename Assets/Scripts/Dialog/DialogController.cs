@@ -49,7 +49,8 @@ public class DialogController : MonoBehaviour
                     ClearDialogNameText();
 
                     //Let the player move now
-                    Player.instance.SetDeactivatedMovement(false);
+                    //Player.instance.SetDeactivatedMovement(false);
+                    GameManager.instance.dialogBoxOpened = false;
                 }
                 else
                 {
@@ -58,7 +59,10 @@ public class DialogController : MonoBehaviour
                     if (currentSentence < dialogSentences.Length)
                         dialogText.text = dialogSentences[currentSentence];
                     else
-                        Player.instance.SetDeactivatedMovement(false);
+                    {
+                        //Player.instance.SetDeactivatedMovement(false);
+                        GameManager.instance.dialogBoxOpened = false;
+                    }
                 }
             }
 
@@ -68,7 +72,8 @@ public class DialogController : MonoBehaviour
     public void ActivateDialog(string[] newSentencesToUse)
     {
         //Stop the player from moving while in dialog mode
-        Player.instance.SetDeactivatedMovement(true);
+        //Player.instance.SetDeactivatedMovement(true);
+        GameManager.instance.dialogBoxOpened = true;
 
         dialogSentences = newSentencesToUse;
         dialogBox.SetActive(true);
