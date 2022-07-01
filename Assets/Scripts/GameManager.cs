@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if(gameMenuOpened || dialogBoxOpened)
-        {
+        {            
             Player.instance.SetDeactivatedMovement(true);
         } else
         {

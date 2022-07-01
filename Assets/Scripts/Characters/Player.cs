@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public static Player instance { get; private set; }
 
     public int instanceNumber = 0;
+    private float playerPositionBoxDetectionSize = 1.5f;
 
     [SerializeField] 
     public string entranceAreaName;
@@ -69,11 +70,13 @@ public class Player : MonoBehaviour
         if (this.deactivatedMovement)
         {
             playerRigidBody2D.velocity = Vector2.zero;
+            playerAnimator.SetFloat("movementX", 0);
+            playerAnimator.SetFloat("movementY", 0);
             return;
         }
 
-        float horizontalMovement = Input.GetAxisRaw("Horizontal");//;
-        float verticalMovement = Input.GetAxisRaw("Vertical"); // * Time.deltaTime;
+        float horizontalMovement = getInputHorizontalRaw(); //Input.GetAxisRaw("Horizontal");//;
+        float verticalMovement = getInputVerticalRaw(); //Input.GetAxisRaw("Vertical"); // * Time.deltaTime;
 
         playerRigidBody2D.velocity = new Vector2(horizontalMovement, verticalMovement) * moveSpeed;
 
@@ -115,6 +118,102 @@ public class Player : MonoBehaviour
     public bool isDeactivatedMovement()
     {
         return this.deactivatedMovement;
+    }
+
+    private float getInputHorizontalRaw()
+    {
+        Vector3 pointerWorldPosition = Vector3.zero;
+
+        bool mouseButtonPressed = Input.GetMouseButton(0);
+
+        if (mouseButtonPressed)
+            pointerWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if (Input.touchCount > 0)
+        {
+            Touch touchPressed = Input.GetTouch(0);
+
+            if (touchPressed.pressure > 0)
+                pointerWorldPosition = Camera.main.ScreenToWorldPoint(touchPressed.position);
+        }
+
+        if (pointerWorldPosition != Vector3.zero)
+        {
+            //Debug.Log("getInputHorizontalRaw w:" + pointerWorldPosition.x + " compared p:" + playerRigidBody2D.position.x);
+
+            if (pointerWorldPosition.x < playerRigidBody2D.position.x && !IsWithinPlayerHorizontalBox(pointerWorldPosition))
+                return -1;
+            else if (pointerWorldPosition.x > playerRigidBody2D.position.x && !IsWithinPlayerHorizontalBox(pointerWorldPosition))
+                return 1;
+            else return 0;
+        }
+
+        return Input.GetAxisRaw("Horizontal"); ;
+    }
+
+    private float getInputVerticalRaw()
+    {
+        Vector3 pointerWorldPosition = Vector3.zero;
+
+        bool mouseButtonPressed = Input.GetMouseButton(0);
+        
+        if(mouseButtonPressed)
+            pointerWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if(Input.touchCount > 0)
+        {
+            Touch touchPressed = Input.GetTouch(0);
+
+            if (touchPressed.pressure > 0)
+                pointerWorldPosition = Camera.main.ScreenToWorldPoint(touchPressed.position);
+        }
+
+        if (pointerWorldPosition != Vector3.zero)
+        {
+            //Debug.Log("getInputVerticalRaw w:" + pointerWorldPosition.y + " compared p:" + playerRigidBody2D.position.y);
+
+            if (pointerWorldPosition.y < playerRigidBody2D.position.y && !IsWithinPlayerVerticalBox(pointerWorldPosition))
+                return -1;
+            else if (pointerWorldPosition.y > playerRigidBody2D.position.y && !IsWithinPlayerVerticalBox(pointerWorldPosition))
+                return 1;
+            else return 0;
+        }
+
+        return Input.GetAxisRaw("Vertical");
+    }
+
+    private bool IsWithinPlayerVerticalBox(Vector3 pointerWorldPosition)
+    {
+
+        bool ret = false;
+
+        if (playerPositionBoxDetectionSize > Mathf.Abs(pointerWorldPosition.y - playerRigidBody2D.position.y))
+        {
+            ret = true;
+        }
+/*        Debug.Log("IsWithinPlayerVerticalBox is " + ret 
+            + " wY: " + pointerWorldPosition.y
+            + " pY:" + playerRigidBody2D.position.y
+            + " abs: " + Mathf.Abs(playerRigidBody2D.position.y - pointerWorldPosition.y));*/
+
+        return ret;
+    }
+
+    private bool IsWithinPlayerHorizontalBox(Vector3 pointerWorldPosition)
+    {
+        bool ret = false;
+
+        if (playerPositionBoxDetectionSize > Mathf.Abs(pointerWorldPosition.x - playerRigidBody2D.position.x))
+        {
+            ret = true;
+        }
+
+/*        Debug.Log("IsWithinPlayerHorizontalBox is " + ret
+            + " wX: " + pointerWorldPosition.x
+            + " pX:" + playerRigidBody2D.position.x
+            + " abs: " + Mathf.Abs(playerRigidBody2D.position.x - pointerWorldPosition.x));*/
+
+        return ret;
     }
 
 }
