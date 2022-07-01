@@ -33,6 +33,7 @@ public class DialogController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(dialogBox.activeInHierarchy && dialogSentences != null && dialogSentences.Length != 0)
         {
             if(Input.GetButtonUp("Fire1"))

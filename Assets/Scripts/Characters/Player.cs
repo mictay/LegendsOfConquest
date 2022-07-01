@@ -37,25 +37,23 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Player Awake() called");
 
-        if (instance != null && instance != this)
+        if (instance != null && instance != this) { 
+            Debug.Log("Player Awake() destory this");
             Destroy(this.gameObject);
+        }
         else
+        {
+            Debug.Log("Player Awake() create instance from this");
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
 
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Player.counter++;
-
-        if (instanceNumber == 0)
-            instanceNumber = Player.counter;
-
-        Debug.Log($"Player Start() called {counter} for Player {instanceNumber}");
-
-        //Keep this player instance when loading new scenes
-        DontDestroyOnLoad(playerAnimator);
+        Debug.Log("Player Start() called");
     }
 
     // Update is called once per frame

@@ -16,16 +16,21 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameManager Awake() called");
 
         if (instance != null && instance != this)
+        {
             Destroy(this.gameObject);
+        }
         else
+        {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
 
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        Debug.Log("GameManager Start() called");
 
         //Look around and gather every game object that has a player stat
         playerStats = FindObjectsOfType<PlayerStats>();
@@ -42,4 +47,10 @@ public class GameManager : MonoBehaviour
             Player.instance.SetDeactivatedMovement(false);
         }
     }
+
+    public PlayerStats[] GetPlayerStats()
+    {
+        return playerStats;
+    }
+
 }

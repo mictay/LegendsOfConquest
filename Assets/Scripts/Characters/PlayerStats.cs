@@ -1,31 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
 
     public static PlayerStats instance { get; private set; }
 
-    [SerializeField] string playerName;
+    public string playerName;
+    public Sprite characterSprite;
 
     [SerializeField] int maxLevel = 50;
 
-    [SerializeField] int playerLevel = 1;
-    [SerializeField] int currentXP;
-    [SerializeField] int[] xpForEachLevel; //xp required for each level
-    [SerializeField] int baseLevelXP = 100;
+    public int playerLevel = 1;
+    public int[] xpForEachLevel; //xp required for each level
+    public int baseLevelXP = 100;
 
-    [SerializeField] int maxHP = 30;
-    [SerializeField] int currentHP;
+    public int currentXP;
 
-    [SerializeField] int maxMana = 30;
-    [SerializeField] int currentMana;
+    public int maxHP = 30;
+    public int currentHP;
+
+    public int maxMana = 30;
+    public int currentMana;
 
     [SerializeField] int dexterity;
 
     [SerializeField] int defence;
-
+/*
     private void Awake()
     {
         Debug.Log("PlayerStats Awake() called");
@@ -35,7 +38,7 @@ public class PlayerStats : MonoBehaviour
         else
             instance = this;
 
-    }
+    }*/
 
     // Start is called before the first frame update
     void Start()
