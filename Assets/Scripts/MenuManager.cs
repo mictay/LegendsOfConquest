@@ -18,6 +18,8 @@ public class MenuManager : MonoBehaviour
     public Image[] characterImages;
     [SerializeField] GameObject[] characterPanels;
 
+    private bool updatedStats = false;
+
     public void Start()
     {
         if (instance != null && instance != this)
@@ -28,6 +30,14 @@ public class MenuManager : MonoBehaviour
 
     public void Update()
     {
+
+        if(menu.activeInHierarchy)
+        {
+            GameManager.instance.gameMenuOpened = true;
+            if (!updatedStats)
+                UpdateStats();
+        }
+
         if(Input.GetKeyDown(KeyCode.M))
         {
             ToggleStatsMenu();
@@ -41,6 +51,7 @@ public class MenuManager : MonoBehaviour
         {
             menu.SetActive(false);
             GameManager.instance.gameMenuOpened = false;
+            updatedStats = true;
         }
         else
         {
@@ -80,6 +91,13 @@ public class MenuManager : MonoBehaviour
             characterImages[i].sprite = playerStats[i].characterSprite;
         }
 
+        updatedStats = true;
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("MenuManager Quit Game");
+        Application.Quit();
     }
 
 }
