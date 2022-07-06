@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerStats[] playerStats;
 
     public bool gameMenuOpened, dialogBoxOpened;
-
     private void Awake()
     {
         Debug.Log("GameManager Awake() called");
