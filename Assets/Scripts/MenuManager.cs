@@ -35,7 +35,12 @@ public class MenuManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI statsTextWeapon;
     [SerializeField] TextMeshProUGUI statsTextWeaponPower;
     [SerializeField] TextMeshProUGUI statsTextArmor;
-    [SerializeField] TextMeshProUGUI statsTextArmorDefense;    
+    [SerializeField] TextMeshProUGUI statsTextArmorDefense;
+
+    [SerializeField] GameObject itemSlotContainer;
+    [SerializeField] Transform itemSlotContainerParent;
+
+
 
     public void Start()
     {
@@ -150,5 +155,28 @@ public class MenuManager : MonoBehaviour
         statsTextArmor.text = "None";
         statsTextArmorDefense.text = "0";
     }
+    public void UpdateItemsInventory()
+    {
 
+        for (int i = 0; i < itemSlotContainerParent.childCount; i++)
+            Destroy(itemSlotContainerParent.transform.GetChild(i).gameObject);
+
+
+        foreach(ItemsManager item in Inventory.instance.GetItemsList())
+        {
+            //Copy the Prefab
+            GameObject itemButtonFromPrefab = Instantiate(itemSlotContainer);
+
+            //Change the Image
+            itemButtonFromPrefab.transform.Find("Item Image").GetComponent<Image>().sprite = item.itemImage;
+
+            //Give the Grid the Item            
+            itemButtonFromPrefab.transform.SetParent(itemSlotContainerParent);
+
+            //Add the newly created object to the Grid
+            //RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
+
+        }
+
+    }
 }

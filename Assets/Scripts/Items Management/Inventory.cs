@@ -51,4 +51,9 @@ public class Inventory : MonoBehaviour
         itemsList.Remove(item);
     }
 
+    public List<ItemsManager> GetItemsList()
+    {
+        return itemsList;
+    }
+
 }
