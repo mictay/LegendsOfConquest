@@ -25,9 +25,9 @@ public class PlayerStats : MonoBehaviour
     public int maxMana = 30;
     public int currentMana;
 
-    [SerializeField] int dexterity;
+    public int dexterity;
 
-    [SerializeField] int defence;
+    public int defence;
 /*
     private void Awake()
     {

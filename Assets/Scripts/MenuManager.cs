@@ -20,6 +20,23 @@ public class MenuManager : MonoBehaviour
 
     private bool updatedStats = false;
 
+    [SerializeField] GameObject defaultMenuPanelCharactersStats;
+
+    [SerializeField] GameObject[] statsButtonCharacters;
+
+
+    /** Menu : Stats **/
+    [SerializeField] Image statsImageCharacter;
+    [SerializeField] TextMeshProUGUI statsTextCharacterName;
+    [SerializeField] TextMeshProUGUI statsTextHp;
+    [SerializeField] TextMeshProUGUI statsTextMana;
+    [SerializeField] TextMeshProUGUI statsTextDexterity;
+    [SerializeField] TextMeshProUGUI statsTextDefense;
+    [SerializeField] TextMeshProUGUI statsTextWeapon;
+    [SerializeField] TextMeshProUGUI statsTextWeaponPower;
+    [SerializeField] TextMeshProUGUI statsTextArmor;
+    [SerializeField] TextMeshProUGUI statsTextArmorDefense;    
+
     public void Start()
     {
         if (instance != null && instance != this)
@@ -35,7 +52,7 @@ public class MenuManager : MonoBehaviour
         {
             GameManager.instance.gameMenuOpened = true;
             if (!updatedStats)
-                UpdateStats();
+                UpdateCharactersStats();
         }
 
         if(Input.GetKeyDown(KeyCode.M))
@@ -55,10 +72,11 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            UpdateStats();
+            UpdateCharactersStats();
             menu.SetActive(true);
             GameManager.instance.gameMenuOpened = true;
         }
+
     }
 
     public void FadeImage()
@@ -66,9 +84,9 @@ public class MenuManager : MonoBehaviour
         imageToFade.GetComponent<Animator>().SetTrigger("Start Fading");
     }
 
-    public void UpdateStats()
+    public void UpdateCharactersStats()
     {
-        playerStats = GameManager.instance.GetPlayerStats();
+        playerStats = GameManager.instance.GetPlayerStats();        
 
         //TURN OFF all the Panels
         for (int i = 0; i < characterPanels.Length; i++)
@@ -91,6 +109,7 @@ public class MenuManager : MonoBehaviour
             characterImages[i].sprite = playerStats[i].characterSprite;
         }
 
+        defaultMenuPanelCharactersStats.SetActive(true);
         updatedStats = true;
     }
 
@@ -98,6 +117,38 @@ public class MenuManager : MonoBehaviour
     {
         Debug.Log("MenuManager Quit Game");
         Application.Quit();
+    }
+
+    public void UpdateCharacterStats()
+    {
+
+        //all off
+        for (int i = 0; i < statsButtonCharacters.Length; i++)
+        {
+            statsButtonCharacters[i].SetActive(false);
+        }
+
+        //turn all character buttons on
+        for (int i = 0; i < playerStats.Length; i++)
+        {
+            statsButtonCharacters[i].GetComponentInChildren<TextMeshProUGUI>().text = playerStats[i].playerName;
+            statsButtonCharacters[i].SetActive(true);
+            UpdateACharacterStats(i);
+        }
+    }
+
+    public void UpdateACharacterStats(int i)
+    {
+        statsImageCharacter.sprite = playerStats[i].characterSprite;
+        statsTextCharacterName.text = playerStats[i].playerName;
+        statsTextHp.text = playerStats[i].currentHP.ToString();
+        statsTextMana.text = playerStats[i].currentMana.ToString();
+        statsTextDexterity.text = playerStats[i].dexterity.ToString();
+        statsTextDefense.text = playerStats[i].defence.ToString();
+        statsTextWeapon.text = "None";
+        statsTextWeaponPower.text = "0";
+        statsTextArmor.text = "None";
+        statsTextArmorDefense.text = "0";
     }
 
 }
