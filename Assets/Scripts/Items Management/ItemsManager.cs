@@ -19,6 +19,9 @@ public class ItemsManager : MonoBehaviour
     public int weaponDexterity;
     public int armorDefence;
 
+    public bool isStackable;
+    public int stackSize;
+
     // Start is called before the first frame update
     void Start()
     {

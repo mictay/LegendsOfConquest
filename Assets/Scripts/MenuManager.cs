@@ -170,6 +170,11 @@ public class MenuManager : MonoBehaviour
             //Change the Image
             itemButtonFromPrefab.transform.Find("Item Image").GetComponent<Image>().sprite = item.itemImage;
 
+            if(item.isStackable)
+                itemButtonFromPrefab.transform.Find("Item Text").GetComponent<TextMeshProUGUI>().text = item.stackSize.ToString();
+            else
+                itemButtonFromPrefab.transform.Find("Item Text").GetComponent<TextMeshProUGUI>().text = "";
+
             //Give the Grid the Item            
             itemButtonFromPrefab.transform.SetParent(itemSlotContainerParent);
 
