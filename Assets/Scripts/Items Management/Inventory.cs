@@ -7,10 +7,29 @@ public class Inventory : MonoBehaviour
 
     private List<ItemsManager> itemsList;
 
+    public static Inventory instance { get; private set; }
+
+    private void Awake()
+    {
+        Debug.Log("Inventory Awake() called");
+
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+
+            if(instance.itemsList == null)
+                itemsList = new List<ItemsManager>();
+
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
-    {
-        itemsList = new List<ItemsManager>();
+    {        
         Debug.Log("New Inventory has been created");
     }
 
@@ -23,6 +42,8 @@ public class Inventory : MonoBehaviour
     public void AddItems(ItemsManager item)
     {
         itemsList.Add(item);
+
+        Debug.Log($"{item.itemName} was added to the list count={itemsList.Count}");
     }
 
     public void DiscardItem(ItemsManager item)
