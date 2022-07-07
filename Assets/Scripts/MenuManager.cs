@@ -40,14 +40,25 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject itemSlotContainer;
     [SerializeField] Transform itemSlotContainerParent;
 
+    public TextMeshProUGUI itemName, itemDescription;
 
+    public ItemsManager activeItem = null;
+
+    public GameObject characterDropDown;
+
+    public PlayerStats selectedPlayerStats;
 
     public void Start()
     {
         if (instance != null && instance != this)
+        {
             Destroy(this.gameObject);
+        }
         else
+        {
             instance = this;
+            //DontDestroyOnLoad(gameObject);
+        }
     }
 
     public void Update()
@@ -77,6 +88,7 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
+            PopulateCharacterDropDown();
             UpdateCharactersStats();
             menu.SetActive(true);
             GameManager.instance.gameMenuOpened = true;
@@ -102,7 +114,6 @@ public class MenuManager : MonoBehaviour
         //TURN ON the relavant Character Stat Panels
         for (int i = 0; i < playerStats.Length; i++)
         {
-            characterPanels[i].SetActive(true);
             nameTexts[i].text = playerStats[i].playerName;
             hpTexts[i].text = "HP: " + playerStats[i].currentHP + "/" + playerStats[i].maxHP;
             manaTexts[i].text = "Mana: " + playerStats[i].currentMana + "/" + playerStats[i].maxMana;
@@ -112,6 +123,7 @@ public class MenuManager : MonoBehaviour
             xpTexts[i].text = $"{playerStats[i].currentXP}/{playerStats[i].xpForEachLevel[playerStats[i].playerLevel]}";
             xpSliders[i].interactable = false;
             characterImages[i].sprite = playerStats[i].characterSprite;
+            characterPanels[i].SetActive(true);
         }
 
         defaultMenuPanelCharactersStats.SetActive(true);
@@ -181,7 +193,72 @@ public class MenuManager : MonoBehaviour
             //Add the newly created object to the Grid
             //RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
 
+            //Support button method to display the name and description at the bottoom
+            itemButtonFromPrefab.GetComponent<ItemButton>().itemOnButton = item;
         }
 
     }
+
+    public void DiscardItem()
+    {
+
+        //I have no idea why == null doesn't work
+        if (this.activeItem !!= null)
+            return;
+
+        Debug.Log($"DiscardItem called for {activeItem.itemImage}");
+
+        //Find this item
+        foreach (ItemsManager item in Inventory.instance.GetItemsList())
+        {
+            if (item.itemName == activeItem.itemName)
+            {
+                item.stackSize -= 1;
+                if (item.stackSize == 0) {
+                    Inventory.instance.GetItemsList().Remove(item);
+                }
+                break;
+            }
+
+        }
+
+        UpdateItemsInventory();
+
+    }
+
+    public void UseItem()
+    {
+        activeItem.UseItem();
+        DiscardItem();
+    }
+
+    private void PopulateCharacterDropDown()
+    {
+        TMP_Dropdown dropdown = characterDropDown.GetComponentInChildren<TMP_Dropdown>();
+        dropdown.ClearOptions();
+
+        PlayerStats[] players = GameManager.instance.GetPlayerStats();
+
+        List<string> playerNames = new List<string>();
+
+        foreach(PlayerStats playerStat in players)
+        {
+            playerNames.Add(playerStat.playerName);
+        }
+
+        dropdown.AddOptions(playerNames);
+
+        //Default to the first PlayerStats
+        selectedPlayerStats = players[0];
+    }
+
+    public void SetSelectedPlayerStat()
+    {
+
+        TMP_Dropdown dropdown = characterDropDown.GetComponentInChildren<TMP_Dropdown>();
+        Debug.Log($"MenuManager.SetSelectedPlayerStat() called value={dropdown.value}");
+
+        selectedPlayerStats = GameManager.instance.GetPlayerStats()[dropdown.value];
+    }
+
 }

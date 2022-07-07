@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
 
-    public static PlayerStats instance { get; private set; }
+    public static PlayerStats instance { get; set; }
 
     public string playerName;
     public Sprite characterSprite;
@@ -28,21 +28,15 @@ public class PlayerStats : MonoBehaviour
     public int dexterity;
 
     public int defence;
-/*
     private void Awake()
     {
-        Debug.Log("PlayerStats Awake() called");
 
-        if (instance != null && instance != this)
-            Destroy(this.gameObject);
-        else
-            instance = this;
-
-    }*/
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+
         xpForEachLevel = new int[maxLevel];
         for(int i = 0; i < maxLevel; i++)
         {
@@ -84,4 +78,23 @@ public class PlayerStats : MonoBehaviour
 
     }
 
+
+    public void AddMana(int mana)
+    {
+
+        currentMana += mana;
+
+        if (currentMana > maxMana)
+            currentMana = maxMana;
+
+    }
+
+    public void AddHP(int hp)
+    {
+        currentHP += hp;
+
+        if (currentHP > maxHP)
+            currentHP = maxHP;
+
+    }
 }

@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
+        PlayerStats.instance = this.GetComponent<PlayerStats>();
     }
 
     // Start is called before the first frame update

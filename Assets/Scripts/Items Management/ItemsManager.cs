@@ -22,18 +22,6 @@ public class ItemsManager : MonoBehaviour
     public bool isStackable;
     public int stackSize;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -48,6 +36,20 @@ public class ItemsManager : MonoBehaviour
     private void SelfDestroy()
     {
         Destroy(gameObject);
+    }
+
+    public void UseItem()
+    {
+        if(itemType == ItemType.Item)
+        {
+
+            if (affectType == AffectType.HP)
+                MenuManager.instance.selectedPlayerStats.AddHP(this.amountOfAffect);
+
+            else if (affectType == AffectType.Mana)
+                MenuManager.instance.selectedPlayerStats.AddMana(this.amountOfAffect);
+
+        }
     }
 
 }
