@@ -27,7 +27,11 @@ public class PlayerStats : MonoBehaviour
 
     public int dexterity;
 
+    public ItemsManager weapon = null;
+    public ItemsManager armor = null;
+
     public int defence;
+
     private void Awake()
     {
 

@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     {
         Debug.Log("Inventory Awake() called");
 
-        if (instance != null && instance != this)
+        if (instance && instance != this)
         {
             Destroy(this.gameObject);
         }

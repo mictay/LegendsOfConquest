@@ -156,16 +156,30 @@ public class MenuManager : MonoBehaviour
 
     public void UpdateACharacterStats(int i)
     {
+        statsTextWeapon.text = "";
+        statsTextWeaponPower.text = "0";
+        statsTextArmor.text = "";
+        statsTextArmorDefense.text = "0";
+
         statsImageCharacter.sprite = playerStats[i].characterSprite;
         statsTextCharacterName.text = playerStats[i].playerName;
         statsTextHp.text = playerStats[i].currentHP.ToString();
         statsTextMana.text = playerStats[i].currentMana.ToString();
         statsTextDexterity.text = playerStats[i].dexterity.ToString();
         statsTextDefense.text = playerStats[i].defence.ToString();
-        statsTextWeapon.text = "None";
-        statsTextWeaponPower.text = "0";
-        statsTextArmor.text = "None";
-        statsTextArmorDefense.text = "0";
+
+        if (playerStats[i].weapon)
+        {
+            statsTextWeapon.text = playerStats[i].weapon.GetComponent<ItemsManager>().itemName;
+            statsTextWeaponPower.text = playerStats[i].weapon.GetComponent<ItemsManager>().weaponDexterity.ToString();
+        }
+
+        if (playerStats[i].armor)
+        {
+            statsTextArmor.text = playerStats[i].armor.GetComponent<ItemsManager>().itemName;
+            statsTextArmorDefense.text = playerStats[i].armor.GetComponent<ItemsManager>().armorDefence.ToString();
+        }
+
     }
     public void UpdateItemsInventory()
     {
@@ -202,8 +216,8 @@ public class MenuManager : MonoBehaviour
     public void DiscardItem()
     {
 
-        //I have no idea why == null doesn't work
-        if (this.activeItem !!= null)
+        //MonoBehavior == null is overrided
+        if (!this.activeItem)
             return;
 
         Debug.Log($"DiscardItem called for {activeItem.itemImage}");
@@ -223,7 +237,6 @@ public class MenuManager : MonoBehaviour
         }
 
         UpdateItemsInventory();
-
     }
 
     public void UseItem()

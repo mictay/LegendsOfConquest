@@ -936,7 +936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &112522224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14004,11 +14004,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1516966664076975602, guid: a38e16df80869734e93563974ea0e25a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.766055
+      value: -1.4483899
       objectReference: {fileID: 0}
     - target: {fileID: 1516966664076975602, guid: a38e16df80869734e93563974ea0e25a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.75
+      value: 1.7493892
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a38e16df80869734e93563974ea0e25a, type: 3}
@@ -20715,6 +20715,8 @@ MonoBehaviour:
   maxMana: 30
   currentMana: 0
   dexterity: 0
+  weapon: {fileID: 0}
+  armor: {fileID: 0}
   defence: 0
 --- !u!4 &1365000263 stripped
 Transform:
@@ -20750,6 +20752,8 @@ MonoBehaviour:
   maxMana: 30
   currentMana: 0
   dexterity: 10
+  weapon: {fileID: 0}
+  armor: {fileID: 0}
   defence: 30
 --- !u!1 &1418703784
 GameObject:

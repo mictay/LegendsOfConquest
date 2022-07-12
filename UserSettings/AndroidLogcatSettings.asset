@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "R3CMC03HTDX",
     "m_SelectedPackage": {
-        "deviceId": "R3CMC03HTDX",
-        "name": "com.celebrationsoftware.unity.tutorials",
-        "processId": 10305,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -12,6 +12,18 @@
             "deviceId": "R3CMC03HTDX",
             "name": "com.celebrationsoftware.unity.tutorials",
             "processId": 10305,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CMC03HTDX",
+            "name": "com.celebrationsoftware.unity.tutorials",
+            "processId": 27865,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CMC03HTDX",
+            "name": "com.sec.android.app.launcher",
+            "processId": 3004,
             "exited": false
         }
     ],
