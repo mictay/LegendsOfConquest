@@ -20,7 +20,7 @@ public class DialogController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(instance == null)
+        if(!instance)
             instance = this;
 
         Debug.Log("DialogController Start() called");

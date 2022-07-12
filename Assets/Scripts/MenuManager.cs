@@ -50,7 +50,7 @@ public class MenuManager : MonoBehaviour
 
     public void Start()
     {
-        if (instance != null && instance != this)
+        if (instance && instance != this)
         {
             Destroy(this.gameObject);
         }
