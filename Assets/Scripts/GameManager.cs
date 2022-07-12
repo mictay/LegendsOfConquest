@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] PlayerStats[] playerStats;
 
-    public bool gameMenuOpened, dialogBoxOpened;
+    public bool gameMenuOpened, dialogBoxOpened, gameShopMenuOpened;
+
+    public int currentCoinBalance;
+
     private void Awake()
     {
         Debug.Log("GameManager Awake() called");
@@ -38,7 +41,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameMenuOpened || dialogBoxOpened)
+        if(gameMenuOpened || dialogBoxOpened || gameShopMenuOpened)
         {            
             Player.instance.SetDeactivatedMovement(true);
         } else
